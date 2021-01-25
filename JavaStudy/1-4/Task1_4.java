@@ -2,8 +2,8 @@ public class Task1_4 {
 
     // 定数（アカウント情報）
     // ① 登録されている名前とパスワードを定数で定義してください。
-    private static final String name = "alice";
-    private static final String pass = "pass";
+    String name = "alice";
+    String pass = "pass";
     // 定数（メッセージ）
     private static final String CONST_MSG_SUCCESS = "ログイン成功です。";
     private static final String CONST_MSG_ERROR_NAME = "名前に誤りがあります。";
