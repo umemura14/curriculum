@@ -1,20 +1,25 @@
 package check;
 
+import constants.Constants;
+
+
 public class Check {
-     public static void main(String[] args) {
+     
+    	 private String firstName = "梅村";
+    	 private String lastName = "潤也";
     	 
-    	 String firstName = "梅村";
-    	 String lastName = "潤也";
+    	 private void printName() {
+    		 System.out.println("printNameメソッド" + " " + "→" +" " + firstName + lastName);
+    	 }
     	 
-    	 printName(firstName,lastName);
-    	 
-    	 Pet pet = new Pet("java吉","hoge");
-    	 pet.introduce();
-    	 
-    	 RobotPet rpet = new RobotPet("R2D2","ルーク");
-    	 rpet.introduce();
-     }
-private  final static void printName(String firstName, String lastName ) {
-	System.out.println("printNameメソッド→" + firstName + lastName);
- }
+    	 public static void main(String[] args) {
+    		 Check ch = new Check();
+    		   ch.printName();
+    		 
+    	     Pet pt = new Pet(Constants.CHECK_CLASS_JAVA,Constants.CHECK_CLASS_HOGE);
+    	     pt.introduce();
+    	     
+    	     RobotPet rpt = new RobotPet(Constants.CHECK_CLASS_R2D2,Constants.CHECK_CLASS_LUKE);
+    	     rpt.introduce();
+    	 }
 }
