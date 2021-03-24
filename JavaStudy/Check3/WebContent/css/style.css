@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.h-label {
+	display: inline-block;
+	padding: 10px;
+	color: white;
+	padding: 10px;
+	font-size: 10px;
+}
+
+.f-label {
+	display: inline-block;
+	padding: 10px;
+	color: white;
+	padding: 10px;
+	font-size: 10px;
+}
+
+.h-div {
+	background-color: gray;
+}
+
+.f-div {
+	background-color: gray;
+}
+
+.jsp-div {
+	height: 100%;
+	padding: 50px 0;
+}
+
+.date-time {
+	font-size: 8px;
+}
+
+.jsp-label {
+	font-size: 10px;
+}
+
+td {
+	text-align: center;
+}
