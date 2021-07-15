@@ -4,6 +4,7 @@
 
 <%
 // 問① getAttributeに適切な引数をセットして、EmployeeControllerから渡されたBeanを取得する。
+//(getAttributeメソッドで引数に属性の名前を文字列(EmployeeBean)で与えて属性値を取得(rtnData))
 EmployeeBean employeeBean = (EmployeeBean) request.getAttribute("EmployeeBean");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,7 +16,7 @@ EmployeeBean employeeBean = (EmployeeBean) request.getAttribute("EmployeeBean");
 <body>
 	<div align="center">
 		<!-- 検索が成功した場合の表示 -->
-		<%
+		<%//(nullではない。検索条件と合致したデータが存在し、テーブルのデータを取得できている)
 		if (employeeBean != null) {
 		%>
 		<table border="1">

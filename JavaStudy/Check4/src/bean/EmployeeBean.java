@@ -3,6 +3,7 @@ package bean;
 /**
  * ・社員情報データ（モデル）
  */
+//(フィールドがprivateのため、setter,getterのアクセサメソッドが必要)
 public class EmployeeBean {
 	private String Id;
 	private String PassWord;

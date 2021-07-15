@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 //問３－１ Serviceであることを表すアノテーションを記述
+//Controllerクラスに対して業務処理を提供するクラス。
 @Service
 
 public class AccountService implements UserDetailsService {
 
     //問３－２ 自動でインスタンス生成をするアノテーションを記述
+	//@Autowired:newでインスタンス化していないが@Service,@Controller,@Repositoryからクラスを探しだし、使えるようにする。
     @Autowired
     private AccountRepository repository;
 
@@ -23,10 +25,14 @@ public class AccountService implements UserDetailsService {
 
 	private List<Account> result;
 
+    //UsernameNotFoundExceptionがthrowされるかもしれないことを宣言しているのがthrows
+	//例外を投げる可能性があるメソッドに対してthrowsを記述。
+	//loadUserByUsernameメソッドを使うときはtry.catchする必要がある。（検査例外のときはthrows必須）
     @Override
     public Account loadUserByUsername(String username) throws UsernameNotFoundException {
         if (username == null || "".equals(username)) {
             throw new UsernameNotFoundException("Username is empty");
+            //投げるのとインスタンスを同時に生成
         }
 
         Account user = repository.findByUsername(username);
@@ -44,6 +50,7 @@ public class AccountService implements UserDetailsService {
 
 
     //adminを登録するメソッド
+    //@Transactional:付与することでトランザクションの開始、コミット、ロールバックは自動で行われる。
     @Transactional
     public void registerAdmin(String username, String password, String mailAddress) {
         //問３－３ 引数をもとにAccountクラスのインスタンスを生成する構文を記述（passwordはハッシュ化）

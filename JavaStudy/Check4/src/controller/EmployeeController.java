@@ -22,6 +22,7 @@ public class EmployeeController extends HttpServlet {
 
 		try {
 			// 問① index.htmlから送信されたIDとPassWordの値を取得できるように修正しましょう。
+			//(index.htmlから送信された値をパラメーターとしてキャッチしている。)
 			String id = request.getParameter("id");
 			String password = request.getParameter("pass");
 
@@ -34,9 +35,12 @@ public class EmployeeController extends HttpServlet {
 			EmployeeService employeeService = new EmployeeService();
 
 			// 問③ EmployeeBeanに、EmployeeServiceよりsearch関数を呼び出し、返り値を格納する。
+			//(入力された情報をもとに照らし合わせる必要があるため、searchメソッドを呼び出している。)
+			//(searchメソッドの戻り値がemployeeDataで、それをrtnDataに格納)
 			EmployeeBean rtnData = employeeService.search(id,password);
 
 			// 問④ nullの部分に適切な引数をセットする。
+			//(jspに結果を返す準備。キーはEmployeeBean、値はデータが格納されているrtnData)
 			request.setAttribute("EmployeeBean",rtnData);
 
 		} catch (Exception e) {

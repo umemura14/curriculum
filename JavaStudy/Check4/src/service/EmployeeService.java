@@ -40,6 +40,7 @@ public class EmployeeService {
 	EmployeeBean employeeDate = null;
 
 	// 送信されたIDとPassWordを元に社員情報を検索するためのメソッド
+	//(EmployeeControllerより呼び出され、SQLを実行。)
 	public EmployeeBean search(String id, String password) {
 
 		Connection connection = null;
@@ -48,7 +49,7 @@ public class EmployeeService {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			// データベースに接続
+			// データベースに接続(Class.forName()でDB接続の準備)
 			Class.forName(POSTGRES_DRIVER);
 			connection = DriverManager.getConnection(JDBC_CONNECTION, USER, PASS);
 			statement = connection.createStatement();
@@ -80,17 +81,19 @@ public class EmployeeService {
 			*/
 			preparedStatement = connection.prepareStatement(SQL_SELECT);
 			//問⑥ 一番目のindexにIDをセットしてください。2番目のindexにPASSWORDをセット。
+			//(渡ってきたid,passwordで検索するためにセット)
 			preparedStatement.setString(1, id);
 			preparedStatement.setString(2, password);
 
 			// SQLを実行。実行した結果をresultSetに格納。
 			resultSet = preparedStatement.executeQuery();
-
+			
+			//(SQLの値をそれぞれの変数に代入している)
 			while (resultSet.next()) {
 				// 問⑦ tmpName,tmpComment,tmpLoginTimeに適当な値を入れてください。
-				String tmpName = resultSet.getString("name");
-				String tmpComment = resultSet.getString("comment");
-				String tmpLoginTime = resultSet.getString("login_time");
+				String tmpName = resultSet.getString("Name");
+				String tmpComment = resultSet.getString("Comment");
+				String tmpLoginTime = resultSet.getString("Login_Time");
 
 				// 問⑧ EmployeeBeanに取得したデータを入れてください。
 				employeeDate = new EmployeeBean();

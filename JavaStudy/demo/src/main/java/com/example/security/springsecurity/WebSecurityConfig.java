@@ -11,12 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.example.security.springsecurity.account.AccountService;
 
+//@EnableWebSecurity:SpringSecurityを有効にしている。
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AccountService userService;
-
+    //HttpSecurityのconfigureメソッドでURLごとのセキュリティ設定を行う。
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -29,6 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	//変更点 ロード時に、「admin」ユーザを登録する。
+	//AuthenticationManagerBuilderのconfigureメソッドで認証方法の実装方法の設定を行う。
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth

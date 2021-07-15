@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-
+<!-- includeディレクティブを使用してheader.jspパスを読み込む -->
 	<div class="jsp-div">
 		<table>
 			<tr>
@@ -24,5 +24,6 @@
 	</div>
 
 	<%@ include file="footer.jsp"%>
+	<!-- 上記と同様にfooter.jspパスを読み込む -->
 </body>
 </html>

@@ -25,6 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 //実行時に宣言した各フィールド変数がカラムとして作成される
 //問１－１ DB設計に必要なアノテーションを記述
+//データの入れ物となるエンティティクラス。
 @Entity
 
 @Table(name = "accounts")
@@ -38,8 +39,10 @@ public class Account implements UserDetails {
 	}
 
 	//問１－２ プライマリーキーを設定するアノテーションを記述
+	//プライマリーキーとなるプロパティやフィールドを指している。
 	@Id
 
+    //@Column:Entityクラス内で定義したカラム名に相当するメンバ変数に付与する。
 	@Column(nullable = false, unique = true)
 	private String username;
 
@@ -59,6 +62,8 @@ public class Account implements UserDetails {
 	private Date createdAt;
 
 	// roleは複数管理できるように、Set<>で定義。
+	//@ElementCollection:CollectionをEntityの属性として使用する。
+	//@Enumerated:Enumの値をDBに格納するアノテーション。
 	@ElementCollection(fetch = FetchType.EAGER)
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
